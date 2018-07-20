@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+    <title>Segunda</title>
+  </head>
+  <body>
+  <!--Bibliotecas P5.JS-->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+  <!--script P5.JS-->
+  <script>
+      
+      
+      
+  var bugs = []; 
+
+function setup() {
+  var w = windowWidth-10, h = 380;
+    var canvas = createCanvas(w,h);
+  
+  for (var i=0; i<50; i++) {
+    bugs.push(new Jitter());
+  }
+}
+
+function draw() {
+  background(0);
+  for (var i=0; i<bugs.length; i++) {
+    bugs[i].move();
+    bugs[i].display();
+  }
+}
+
+
+function Jitter() {
+  this.x = random(width);
+  this.y = random(height);
+  this.diameter = random(10, 80);
+  this.speed = 10;
+
+  this.move = function() {
+    this.x += random(-this.speed, this.speed);
+    this.y += random(-this.speed, this.speed);
+  };
+
+  this.display = function() {
+      
+    ellipse(this.x, this.y, this.diameter, this.diameter);
+  };
+}
+
+  </script>
+  </body>
+</html>
